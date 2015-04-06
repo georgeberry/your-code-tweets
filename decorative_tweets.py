@@ -1,5 +1,5 @@
 '''
-tweets at you when shit goes wrong (or right)
+tweets at you when things go wrong (or right)
 
 make an info.yaml file of the following format:
     consumer_key : <>
@@ -22,7 +22,7 @@ class tweet_me(object):
 
     make a TWITTER ACCOUNT for your CODE
     '''
-    def __init__(self, tweet_atcha, tweet_success=True):
+    def __init__(self, recipient, tweet_success=True):
         '''
         email_to and email_from have to be email addresses
         '''
@@ -38,10 +38,10 @@ class tweet_me(object):
                              access_token_key=access_token_key,
                              access_token_secret=access_token_secret)
         
-        if tweet_atcha[0] != '@':
-            self.tweet_atcha = '@' + tweet_atcha
+        if recipient[0] != '@':
+            self.recipient = '@' + recipient
         else:
-            self.tweet_atcha = tweet_atcha
+            self.recipient = recipient
         self.tweet_success = tweet_success
 
 
@@ -60,11 +60,11 @@ class tweet_me(object):
             try:
                 f(*args)
                 if self.tweet_success:
-                    msg = 'Hey {}, your function {} completed successfully!! :3'.format(self.tweet_atcha, f.__name__)
+                    msg = 'Hey {}, your function {} completed successfully!! :3'.format(self.recipient, f.__name__)
                     self.tweet_msg
 
             except Exception as e:
-                msg = 'Hey {}, your function call {} failed with exception {}. Get it together!'.format(self.tweet_atcha, f.__name__, e)
+                msg = 'Hey {}, your function call {} failed with exception {}. Get it together!'.format(self.recipient, f.__name__, e)
                 self.tweet(msg)
 
         return wrapped_f
