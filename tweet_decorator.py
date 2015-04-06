@@ -22,7 +22,7 @@ class tweet_me(object):
 
     make a TWITTER ACCOUNT for your CODE
     '''
-    def __init__(self, tweet_atcha):
+    def __init__(self, tweet_atcha, tweet_success=True):
         '''
         email_to and email_from have to be email addresses
         '''
@@ -39,6 +39,7 @@ class tweet_me(object):
                              access_token_secret=access_token_secret)
         
         self.tweet_atcha = tweet_atcha
+        self.tweet_success = tweet_success
 
 
     def tweet(self, message):
@@ -55,8 +56,9 @@ class tweet_me(object):
         def wrapped_f(*args):
             try:
                 f(*args)
-                msg = 'Hey {}, your function {} completed successfully!! :3'.format(self.tweet_atcha, f.__name__)
-                self.tweet_msg
+                if self.tweet_success:
+                    msg = 'Hey {}, your function {} completed successfully!! :3'.format(self.tweet_atcha, f.__name__)
+                    self.tweet_msg
 
             except Exception as e:
                 msg = 'Hey {}, your function call {} failed with exception {}. Get it together!'.format(self.tweet_atcha, f.__name__, e)
