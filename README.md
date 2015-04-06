@@ -14,7 +14,7 @@ You're using 70's hardware, so it could take days to complete.
 
 Get notified on Twitter when it's done (or fails) by simply decorating the function with your username:
 
-    from decorative-tweets import tweet_me
+    from decorative_tweets import tweet_me
     @tweet_me('@myusername')
     def failure():
       return 'not an integer'/42
