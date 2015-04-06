@@ -1,7 +1,7 @@
 from tweet_decorator import tweet_me
 
 
-@tweet_me('@chrisjcameron')
+@tweet_me('')
 def failure():
     return 'not an integer'/42
 
