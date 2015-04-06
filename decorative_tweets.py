@@ -38,7 +38,10 @@ class tweet_me(object):
                              access_token_key=access_token_key,
                              access_token_secret=access_token_secret)
         
-        self.tweet_atcha = tweet_atcha
+        if tweet_atcha[0] != '@':
+            self.tweet_atcha = '@' + tweet_atcha
+        else:
+            self.tweet_atcha = tweet_atcha
         self.tweet_success = tweet_success
 
 
@@ -65,5 +68,3 @@ class tweet_me(object):
                 self.tweet(msg)
 
         return wrapped_f
-
-
