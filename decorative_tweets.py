@@ -12,6 +12,7 @@ requires you to have python-twitter and pyyaml installed
 
 import twitter, yaml
 
+
 class tweet_me(object):
     '''
     DECORATE your functions with this
@@ -23,9 +24,7 @@ class tweet_me(object):
     make a TWITTER ACCOUNT for your CODE
     '''
     def __init__(self, recipient, tweet_success=True):
-        '''
-        email_to and email_from have to be email addresses
-        '''
+
         with open('conf.yaml', 'r') as f:
             conf = yaml.load(f)
             consumer_key = conf['consumer_key']
@@ -61,7 +60,7 @@ class tweet_me(object):
                 f(*args)
                 if self.tweet_success:
                     msg = 'Hey {}, your function {} completed successfully!! :3'.format(self.recipient, f.__name__)
-                    self.tweet_msg
+                    self.tweet(msg)
 
             except Exception as e:
                 msg = 'Hey {}, your function call {} failed with exception {}. Get it together!'.format(self.recipient, f.__name__, e)
