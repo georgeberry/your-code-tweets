@@ -27,24 +27,43 @@ class tweet_me(object):
     ===
     
     '''
-    def __init__(self, recipient, tweet_success=True):
+    def __init__(self, recipient, credentials=None, tweet_success=True):
+        '''
+        can specify credentials in 3 ways:
+        1) absolute path to yaml file
+        2) list of keys, in order
+        3) dict of keys, by name
+        '''
 
-        with open('conf.yaml', 'r') as f:
-            conf = yaml.load(f)
-            consumer_key = conf['consumer_key']
-            consumer_secret = conf['consumer_secret']
-            access_token_key = conf['access_token_key']
-            access_token_secret = conf['access_token_secret']
+        if type(credentials) == str: #absolute path
+            with open(credentials, 'r') as f:
+                conf = yaml.load(f)
+                consumer_key = conf['consumer_key']
+                consumer_secret = conf['consumer_secret']
+                access_token_key = conf['access_token_key']
+                access_token_secret = conf['access_token_secret']
+        elif type(credentials) == list: #list of keys
+            consumer_key, consumer_secret, access_token_key, access_token_secret = credentials
+        elif type(credentials) == dict: #dict of keys
+            consumer_key = credentials['consumer_key']
+            consumer_secret = credentials['consumer_secret']
+            access_token_key = credentials['access_token_key']
+            access_token_secret = credentials['access_token_secret']
+        else:
+            print('No valid credentials')
+            raise
 
         self.t = twitter.Api(consumer_key=consumer_key,
                              consumer_secret=consumer_secret,
                              access_token_key=access_token_key,
                              access_token_secret=access_token_secret)
         
+        #automatically add an @ if you don't have it
         if recipient[0] != '@':
             self.recipient = '@' + recipient
         else:
             self.recipient = recipient
+        
         self.tweet_success = tweet_success
         self.last_tweet_time = 0
 
