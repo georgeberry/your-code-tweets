@@ -17,10 +17,11 @@ class tweet_me(object):
     ===
 
     make a conf.yaml file of the following format:
-        consumer_key : <>
-        consumer_secret : <>
-        access_token_key : <>
-        access_token_secret : <>
+    
+        consumer_key : value
+        consumer_secret : value
+        access_token_key : value
+        access_token_secret : value
 
     requires you to have python-twitter and pyyaml installed
 
@@ -63,7 +64,7 @@ class tweet_me(object):
             self.recipient = '@' + recipient
         else:
             self.recipient = recipient
-        
+
         self.tweet_success = tweet_success
         self.last_tweet_time = 0
 
@@ -86,7 +87,7 @@ class tweet_me(object):
         '''
         def wrapped_f(*args):
             try:
-                f(*args)
+                return f(*args)
                 if self.tweet_success:
                     msg = 'Hey {}, your function {} completed successfully!! :3'.format(self.recipient, f.__name__)
                     self.tweet(msg)
