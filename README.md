@@ -17,7 +17,7 @@ You're using 70's hardware, so it could take days to complete.
 
 Get notified on Twitter when it's done (or fails) by simply decorating the function with your username:
 
-    from decorative_tweets import tweet_me
+    from your_code_tweets import tweet_me
 
     @tweet_me('@myusername')
     def failure():
@@ -29,6 +29,10 @@ Ignore successful function calls with:
     def failure():
       return 'not an integer'/42
 
+Use the decorator class just to send Tweets willy-nilly:
+    
+
+
 ## Output example
 
 I called `failure` and sent it to my friend Chris. This is what he got:
@@ -36,7 +40,7 @@ I called `failure` and sent it to my friend Chris. This is what he got:
 > Hey @chrisjcameron, your function call failure failed with exception unsupported
 > operand type(s) for /: 'str' and 'int'. Get it together!
 
-Pretty nifty: you get the error right in the tweet. `decorative-tweets` automatically trims the message to 140 characters.
+Pretty nifty: you get the error right in the tweet. `your-code-tweets` automatically trims the message to 140 characters.
 
 ## The Catch
 
