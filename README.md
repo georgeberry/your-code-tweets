@@ -54,3 +54,7 @@ Suggestions on more elegant ways to this are appreciated.
 I'm not responsible for you sticking this decorator on a function in a triple-nested for loop and Twitter banning your API access. Use with care!
 
 This works best for toplevel functions that are called once and have to run for a long time.
+
+# License
+
+GPL 3.0. See License.txt for the GPL 3.0 text.
