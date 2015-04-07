@@ -57,4 +57,4 @@ This works best for toplevel functions that are called once and have to run for 
 
 # License
 
-GPL 3.0. See License.txt for the GPL 3.0 text.
+[GPL 3.0](https://www.gnu.org/licenses/gpl-3.0.txt).
