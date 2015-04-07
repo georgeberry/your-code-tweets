@@ -1,10 +1,9 @@
-
 # your-code-tweets
 
 Does your code send too few Tweets to you? Fix that problem right away.
 
 1. Decorate any Python function to Tweet you on success or failure.
-2. Easily suppress success Tweets and publish only a record of your failures.
+2. Easily suppress your successes and publish only a record of your failures.
 
 ## Example
 
@@ -49,12 +48,16 @@ There are three ways to pass credentials:
 2. A list of ordered credentials
 3. A dictionary of named credentials
 
+These are auto-detected from the type of the passed object. See `your_code_tweets.py` for the exact format of these objects.
+
 ## Disclaimer
 
 I'm not responsible for you sticking this decorator on a function in a triple-nested for loop and Twitter banning your API access. Use with care!
+
+Right now, each calling class instance is limited to one tweet per 10 seconds, but this doesn't stop you from making multiple class instances.
 
 This works best for toplevel functions that are called once and have to run for a long time.
 
 # License
 
-[GPL 3.0](https://www.gnu.org/licenses/gpl-3.0.txt).
+[GPL 3.0](https://www.gnu.org/licenses/gpl-3.0.txt)
