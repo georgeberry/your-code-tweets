@@ -31,7 +31,8 @@ Ignore successful function calls with:
 
 Use the decorator class just to send Tweets willy-nilly:
     
-
+    tweet_result = tweet_me('@myusername')
+    tweet_result.tweet('your message here')
 
 ## Output example
 

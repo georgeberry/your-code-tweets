@@ -1,27 +1,31 @@
-'''
-tweets at you when things go wrong (or right)
-
-make an info.yaml file of the following format:
-    consumer_key : <>
-    consumer_secret : <>
-    access_token_key : <>
-    access_token_secret : <>
-
-requires you to have python-twitter and pyyaml installed
-'''
-
 import twitter, yaml
 
 
 class tweet_me(object):
     '''
-    DECORATE your functions with this
 
-    super fly
+    ===
+    
+    DECORATE your functions with this
 
     give the DECORATOR arguments (next lvl, rite?)
 
     make a TWITTER ACCOUNT for your CODE
+
+    (super fly)
+
+    ===
+
+    make a conf.yaml file of the following format:
+        consumer_key : <>
+        consumer_secret : <>
+        access_token_key : <>
+        access_token_secret : <>
+
+    requires you to have python-twitter and pyyaml installed
+
+    ===
+    
     '''
     def __init__(self, recipient, tweet_success=True):
 
