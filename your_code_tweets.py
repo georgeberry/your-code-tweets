@@ -73,7 +73,7 @@ class tweet_me(object):
                     self.tweet(msg)
 
             except Exception as e:
-                msg = 'Hey {}, your function call {} failed with exception {}. Get it together!'.format(self.recipient, f.__name__, e)
+                msg = 'Hey {}, function "{}" failed with exception "{}". Get it together!'.format(self.recipient, f.__name__, e)
                 self.tweet(msg)
                 raise e
 
