@@ -19,20 +19,16 @@ Get notified on Twitter when it's done (or fails) by simply decorating the funct
 
     from your_code_tweets import tweet_me
 
-    @tweet_me('@myusername')
+    @tweet_me('@myusername', credentials)
     def failure():
       return 'not an integer'/42
 
 Ignore successful function calls with:
 
-    @tweet_me('@myusername', tweet_success=False)
+    @tweet_me('@myusername', credentials=credentials, tweet_success=False)
     def failure():
       return 'not an integer'/42
 
-Use the decorator class just to send Tweets willy-nilly:
-    
-    tweet_result = tweet_me('@myusername')
-    tweet_result.tweet('your message here')
 
 ## Output example
 
@@ -43,11 +39,15 @@ I called `failure` and sent it to my friend Chris. This is what he got:
 
 Pretty nifty: you get the error right in the tweet. `your-code-tweets` automatically trims the message to 140 characters.
 
-## The Catch
+## The Catch (Credentials)
 
-You need to create a `conf.yaml` file in the local directory that holds the Twitter API information for your account. [More information here](https://dev.twitter.com/overview/documentation).
+You need to make a Twitter account for your code and pass Twitter credentials to the decorator. More about Twitter credentials [here](https://dev.twitter.com/overview/documentation) and [here](https://code.google.com/p/python-twitter/).
 
-Suggestions on more elegant ways to this are appreciated.
+There are three ways to pass credentials:
+
+1. A string containing the absolute path to a `.yaml` file with credentials
+2. A list of ordered credentials
+3. A dictionary of named credentials
 
 ## Disclaimer
 
