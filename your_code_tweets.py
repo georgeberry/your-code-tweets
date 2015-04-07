@@ -17,7 +17,7 @@ class tweet_me(object):
     ===
 
     make a conf.yaml file of the following format:
-    
+
         consumer_key : value
         consumer_secret : value
         access_token_key : value
@@ -89,11 +89,11 @@ class tweet_me(object):
             try:
                 return f(*args)
                 if self.tweet_success:
-                    msg = 'Hey {}, your function {} completed successfully!! :3'.format(self.recipient, f.__name__)
+                    msg = 'Hey {}, your function "{}" completed at {}!! :3'.format(self.recipient, f.__name__, time.time())
                     self.tweet(msg)
 
             except Exception as e:
-                msg = 'Hey {}, function "{}" failed with exception "{}". Get it together!'.format(self.recipient, f.__name__, e)
+                msg = 'Hey {}, function "{}" failed with exception "{}" at {}.'.format(self.recipient, f.__name__, e, time.time())
                 self.tweet(msg)
                 raise e
 
