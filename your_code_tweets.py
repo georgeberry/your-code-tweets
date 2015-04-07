@@ -1,4 +1,4 @@
-import twitter, yaml
+import twitter, yaml, time
 
 
 class tweet_me(object):
@@ -46,13 +46,19 @@ class tweet_me(object):
         else:
             self.recipient = recipient
         self.tweet_success = tweet_success
+        self.last_tweet_time = 0
 
 
     def tweet(self, message):
         if len(message) > 140:
             message = message[:139] #clipped
 
-        self.t.PostUpdate(message)
+        if time.time() - self.last_tweet_time > 10:
+            self.last_tweet_time = time.time()
+            self.t.PostUpdate(message)
+        else:
+            print('Slow your roll')
+            raise
 
 
     def __call__(self, f):
@@ -69,5 +75,6 @@ class tweet_me(object):
             except Exception as e:
                 msg = 'Hey {}, your function call {} failed with exception {}. Get it together!'.format(self.recipient, f.__name__, e)
                 self.tweet(msg)
+                raise e
 
         return wrapped_f
