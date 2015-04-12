@@ -51,8 +51,7 @@ class tweet_me(object):
             access_token_key = credentials['access_token_key']
             access_token_secret = credentials['access_token_secret']
         else:
-            print('No valid credentials')
-            raise
+            raise Exception('No valid credentials')
 
         self.t = twitter.Api(consumer_key=consumer_key,
                              consumer_secret=consumer_secret,
@@ -77,8 +76,7 @@ class tweet_me(object):
             self.last_tweet_time = time.time()
             self.t.PostUpdate(message)
         else:
-            print('Slow your roll')
-            raise
+            raise Exception('Slow your roll')
 
 
     def __call__(self, f):
