@@ -81,14 +81,16 @@ class tweet_me(object):
 
     def __call__(self, f):
         '''
-        replace f with wrapped_f, yo
+        replace f with wrapped_f
         '''
         def wrapped_f(*args):
             try:
-                return f(*args)
+                res = f(*args)
                 if self.tweet_success:
                     msg = 'Hey {}, your function "{}" completed at {}!! :3'.format(self.recipient, f.__name__, time.time())
                     self.tweet(msg)
+                return res
+
 
             except Exception as e:
                 msg = 'Hey {}, function "{}" failed with exception "{}" at {}. :('.format(self.recipient, f.__name__, e, time.time())
