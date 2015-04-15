@@ -10,7 +10,7 @@ class tweet_me(object):
     def __init__(self, recipient, credentials=None, tweet_success=True):
         '''
         can specify credentials in 3 ways:
-            1) absolute path to yaml file
+            1) absolute path to json file
             2) list of keys, in order
             3) dict of keys, by name
 
