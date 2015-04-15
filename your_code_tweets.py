@@ -1,44 +1,30 @@
-import twitter, yaml, time
+import twitter, json, time
 
 
 class tweet_me(object):
     '''
+    decorate your functions with this
 
-    ===
-    
-    DECORATE your functions with this
-
-    give the DECORATOR arguments (next lvl, rite?)
-
-    make a TWITTER ACCOUNT for your CODE
-
-    (super fly)
-
-    ===
-
-    make a conf.yaml file of the following format:
-
-        consumer_key : value
-        consumer_secret : value
-        access_token_key : value
-        access_token_secret : value
-
-    requires you to have python-twitter and pyyaml installed
-
-    ===
-    
+    give the decorator arguments (the arguments that __init__ takes)
     '''
     def __init__(self, recipient, credentials=None, tweet_success=True):
         '''
         can specify credentials in 3 ways:
-        1) absolute path to yaml file
-        2) list of keys, in order
-        3) dict of keys, by name
+            1) absolute path to yaml file
+            2) list of keys, in order
+            3) dict of keys, by name
+
+        if reading credentials from disk,
+        make a conf.json file of the following format:
+            {consumer_key : value
+            consumer_secret : value
+            access_token_key : value
+            access_token_secret : value}
         '''
 
         if type(credentials) == str: #absolute path
             with open(credentials, 'r') as f:
-                conf = yaml.load(f)
+                conf = json.load(f)
                 consumer_key = conf['consumer_key']
                 consumer_secret = conf['consumer_secret']
                 access_token_key = conf['access_token_key']
