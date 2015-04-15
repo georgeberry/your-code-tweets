@@ -44,7 +44,7 @@ You need to make a Twitter account for your code and pass Twitter credentials to
 
 There are three ways to pass credentials:
 
-1. A string containing the absolute path to a `.yaml` file with credentials
+1. A string containing the absolute path to a `.json` file with credentials
 2. A list of ordered credentials
 3. A dictionary of named credentials
 
